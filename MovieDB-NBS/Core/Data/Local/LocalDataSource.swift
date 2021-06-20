@@ -11,16 +11,12 @@ import RxSwift
 
 protocol LocalDataSourceProtocol: AnyObject {
     func getListPopularMovies() -> Observable<[MovieEntity]>
-//    func getListComingSoonMovies() -> Observable<[ComingSoonEntity]>
     func getPopularDetailMovie(id: Int) -> Observable<MovieEntity>
-//    func getComingSoonDetailMovie(id: Int) -> Observable<ComingSoonEntity>
     func getFavoriteMovie() -> Observable<[MovieEntity]>
     func addPopularMovies(from movies: [MovieEntity]) -> Observable<Bool>
-//    func addComingSoonMovies(from movies: [ComingSoonEntity]) -> Observable<Bool>
     func getListComingSoonMovies() -> Observable<[MovieEntity]>
     func addDetailMovie(from movies: MovieEntity) -> Observable<Bool>
-    func searchFavoriteMovie(query: String) -> Observable<[MovieEntity]>
-    func searchPopularMovie(query: String) -> Observable<[MovieEntity]>
+    func updateFavoriteStatusFromDetail(id: Int) -> Observable<MovieEntity>
 }
 
 class LocalDataSource: NSObject{
@@ -37,37 +33,21 @@ class LocalDataSource: NSObject{
 
 extension LocalDataSource: LocalDataSourceProtocol{
     
-    func searchFavoriteMovie(query: String) -> Observable<[MovieEntity]> {
-        return Observable<[MovieEntity]>.create { observer in
-            if let realm = self.realm {
-                let movieEntities: Results<MovieEntity> = {
-                    realm.objects(MovieEntity.self)
-                        .filter("favorite = \(true)", "title = '\(query)'")
-                        .sorted(byKeyPath: "title", ascending: true)
-                }()
-                observer.onNext(movieEntities.toArray(ofType: MovieEntity.self))
-                observer.onCompleted()
-            }
-            else {
-                observer.onError(DatabaseError.invalidInstance)
-            }
-            
-            return Disposables.create()
-        }
-    }
-    
-    func searchPopularMovie(query: String) -> Observable<[MovieEntity]> {
-        return Observable<[MovieEntity]>.create{observer in
-            if let realm = self.realm {
-                let movieEntities: Results<MovieEntity> = {
-                    realm.objects(MovieEntity.self)
-                        .filter("title = '\(query)'")
-                        .sorted(byKeyPath: "title", ascending: true)
-                }()
-                observer.onNext(movieEntities.toArray(ofType: MovieEntity.self))
-                observer.onCompleted()
-            }
-            else {
+    func updateFavoriteStatusFromDetail(id: Int) -> Observable<MovieEntity> {
+        return Observable<MovieEntity>.create{ observer in
+            if let realm = self.realm, let movieEntity = {
+                realm.objects(MovieEntity.self).filter("id = \(id)")
+            }().first {
+                do {
+                    try realm.write{
+                        movieEntity.setValue(!movieEntity.favorite, forKey: "favorite")
+                    }
+                    observer.onNext(movieEntity)
+                    observer.onCompleted()
+                }catch {
+                    observer.onError(DatabaseError.requestFailed)
+                }
+            } else {
                 observer.onError(DatabaseError.invalidInstance)
             }
             return Disposables.create()
@@ -79,8 +59,8 @@ extension LocalDataSource: LocalDataSourceProtocol{
             if let realm = self.realm{
                 let movieEntities: Results<MovieEntity> = {
                     realm.objects(MovieEntity.self)
-                        .filter("releaseDate = '2022'")
-                        .sorted(byKeyPath: "title", ascending: true)
+                        .filter("releaseDate CONTAINS '2022'")
+                        .sorted(byKeyPath: "backdropPath", ascending: false)
                 }()
                 observer.onNext(movieEntities.toArray(ofType: MovieEntity.self))
                 observer.onCompleted()
@@ -90,6 +70,7 @@ extension LocalDataSource: LocalDataSourceProtocol{
             return Disposables.create()
         }
     }
+    
     func addDetailMovie(from movies: MovieEntity) -> Observable<Bool> {
         return Observable<Bool>.create{ observer in
             if let realm = self.realm {
@@ -130,10 +111,6 @@ extension LocalDataSource: LocalDataSourceProtocol{
         }
     }
     
-//    func addComingSoonMovies(from movies: [ComingSoonEntity]) -> Observable<Bool> {
-//        <#code#>
-//    }
-//
     func getFavoriteMovie() -> Observable<[MovieEntity]> {
         return Observable<[MovieEntity]>.create{ observer in
             if let realm = self.realm {
@@ -167,22 +144,6 @@ extension LocalDataSource: LocalDataSourceProtocol{
         }
     }
     
-//    func getListComingSoonMovies() -> Observable<[ComingSoonEntity]> {
-//        return Observable<[ComingSoonEntity]>.create{ observer in
-//            if let realm = self.realm{
-//                let movieEntities: Results<ComingSoonEntity> = {
-//                    realm.objects(ComingSoonEntity.self)
-//                        .sorted(byKeyPath: "title", ascending: true)
-//                }()
-//                observer.onNext(movieEntities.toArray(ofType: ComingSoonEntity.self))
-//                observer.onCompleted()
-//            } else {
-//                observer.onError(DatabaseError.invalidInstance)
-//            }
-//            return Disposables.create()
-//        }
-//    }
-    
     func getPopularDetailMovie(id: Int) -> Observable<MovieEntity> {
         return Observable<MovieEntity>.create{ observer in
             if let realm = self.realm {
@@ -202,26 +163,6 @@ extension LocalDataSource: LocalDataSourceProtocol{
             return Disposables.create()
         }
     }
-    
-//    func getComingSoonDetailMovie(id: Int) -> Observable<ComingSoonEntity> {
-//        return Observable<ComingSoonEntity>.create{ observer in
-//            if let realm = self.realm {
-//                let movies: Results<ComingSoonEntity> = {
-//                    realm.objects(ComingSoonEntity.self)
-//                        .filter("id = \(id)")
-//                }()
-//                if let movie = movies.first {
-//                    observer.onNext(movie)
-//                    observer.onCompleted()
-//                } else {
-//                    observer.onError(DatabaseError.requestFailed)
-//                }
-//            } else {
-//                observer.onError(DatabaseError.invalidInstance)
-//            }
-//            return Disposables.create()
-//        }
-//    }
     
     
 }

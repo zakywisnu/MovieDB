@@ -45,41 +45,6 @@ final class MovieMapper {
         }
     }
     
-    static func mapListComingSoonMovieResponseToEntity(
-        input movieResponse: [MovieResponse]
-    ) -> [ComingSoonEntity] {
-        return movieResponse.map { result in
-            let movieEntity = ComingSoonEntity()
-            movieEntity.id = result.id ?? 0
-            movieEntity.title = result.title ?? ""
-            movieEntity.overview = result.overview ?? ""
-            movieEntity.posterPath = result.posterPath ?? ""
-            movieEntity.backdropPath = result.backdropPath ?? ""
-            movieEntity.voteAverage = result.voteAverage ?? 0
-            movieEntity.releaseDate = result.releaseDate ?? ""
-            return movieEntity
-        }
-    }
-    
-    static func mapListComingSoonEntityToDomain(
-        input movieEntity: [ComingSoonEntity]
-    ) -> [MovieModel] {
-        return movieEntity.map { result in
-            return MovieModel(
-                id: result.id,
-                title: result.title,
-                overview: result.overview,
-                posterPath: result.posterPath,
-                backdropPath: result.backdropPath,
-                voteAverage: result.voteAverage,
-                releaseDate: result.releaseDate,
-                runtime: 0,
-                genre: [],
-                favorite: result.favorite
-            )
-        }
-    }
-    
     static func mapDetailResponseToEntity(
         input movieResponse: DetailMovieResponse
     ) -> MovieEntity {

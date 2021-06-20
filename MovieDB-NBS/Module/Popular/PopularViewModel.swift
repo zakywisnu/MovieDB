@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class PopularViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
@@ -16,41 +17,35 @@ class PopularViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    @Published var movies: [MovieModel] = []
-    @Published var searchMovies: [MovieModel] = []
-    @Published var errorMessages: String = ""
-    @Published var isLoading: Bool = false
-    @Published var isError: Bool = false
+    var movies = BehaviorRelay<[MovieModel]>(value: [])
+    var searchMovies = BehaviorRelay<[MovieModel]>(value: [])
+    var isLoading = BehaviorRelay<Bool>(value: false)
+    var errorMessages = BehaviorRelay<String?>(value: nil)
+    var isError = BehaviorRelay<Bool>(value: false)
     
     func getPopularMovie(){
-        isLoading = true
+        isLoading.accept(true)
         useCase.getPopularList()
             .observe(on: MainScheduler.instance)
             .subscribe{ result in
-                self.movies = result
+                self.movies.accept(result)
             } onError: { error in
-                self.isError = true
-                self.isLoading = false
-                self.errorMessages = error.localizedDescription
+                self.errorMessages.accept(error.localizedDescription)
+                self.isError.accept(true)
+                self.isLoading.accept(false)
             } onCompleted: {
-                self.isError = false
-                self.isLoading = false
+                self.isError.accept(false)
+                self.isLoading.accept(false)
             }.disposed(by: disposeBag)
     }
     
     func searchPopularMovies(query: String){
-        isLoading = true
-        useCase.searchPopular(query: query)
-            .observe(on: MainScheduler.instance)
-            .subscribe{ result in
-                self.searchMovies = result
-            } onError: { error in
-                self.isError = true
-                self.isLoading = false
-                self.errorMessages = error.localizedDescription
-            } onCompleted: {
-                self.isError = false
-                self.isLoading = false
-            }.disposed(by: disposeBag)
+        isLoading.accept(true)
+        let movieValue = self.movies.value
+        let searchMovie = movieValue.filter{ (movie) -> Bool in
+            movie.title.contains(query)
+        }
+        self.searchMovies.accept(searchMovie)
+        self.isLoading.accept(false)
     }
 }

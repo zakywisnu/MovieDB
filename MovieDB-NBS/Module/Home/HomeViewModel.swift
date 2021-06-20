@@ -16,12 +16,6 @@ class HomeViewModel: ObservableObject {
     init(homeUseCase: HomeUseCase){
         self.homeUseCase = homeUseCase
     }
-//    @Published var bannerMovies: [MovieModel] = []
-//    @Published var popularMovies: [MovieModel] = []
-//    @Published var comingSoonMovies: [MovieModel] = []
-//    @Published var errorMessages: String = ""
-//    @Published var isLoading: Bool = false
-//    @Published var isError: Bool = false
     
     var popularMovies = BehaviorRelay<[MovieModel]>(value: [])
     var bannerMovies = BehaviorRelay<[MovieModel]>(value: [])
@@ -34,6 +28,7 @@ class HomeViewModel: ObservableObject {
         isLoading.accept(true)
         homeUseCase.getBannerList()
             .observe(on: MainScheduler.instance)
+            .take(3)
             .subscribe{ result in
                 self.bannerMovies.accept(result)
             } onError: { error in
@@ -50,6 +45,7 @@ class HomeViewModel: ObservableObject {
         isLoading.accept(true)
         homeUseCase.getPopularList()
             .observe(on: MainScheduler.instance)
+            .take(10)
             .subscribe{ result in
                 self.popularMovies.accept(result)
             } onError: { error in
@@ -66,9 +62,9 @@ class HomeViewModel: ObservableObject {
         isLoading.accept(true)
         homeUseCase.getComingSoon()
             .observe(on: MainScheduler.instance)
+            .take(10)
             .subscribe{ result in
                 self.comingSoonMovies.accept(result)
-                print(result)
             } onError: { error in
                 self.isError.accept(true)
                 self.isLoading.accept(false)
@@ -78,5 +74,6 @@ class HomeViewModel: ObservableObject {
                 self.isLoading.accept(false)
             }.disposed(by: disposeBag)
     }
+    
     
 }

@@ -10,7 +10,6 @@ import RxSwift
 
 protocol FavoriteUseCase {
     func getFavoriteMovie() -> Observable<[MovieModel]>
-    func searchFavorite(query: String) -> Observable<[MovieModel]>
 }
 
 class FavoriteInteractor: FavoriteUseCase {
@@ -23,10 +22,6 @@ class FavoriteInteractor: FavoriteUseCase {
     
     func getFavoriteMovie() -> Observable<[MovieModel]> {
         return repository.getFavoriteMovie()
-    }
-    
-    func searchFavorite(query: String) -> Observable<[MovieModel]> {
-        return repository.searchFavoriteMovie(query: query)
     }
     
 }

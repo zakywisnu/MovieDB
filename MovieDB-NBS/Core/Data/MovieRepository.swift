@@ -14,10 +14,8 @@ protocol MovieRepositoryProtocol: AnyObject {
     func getPopularMovieList() -> Observable<[MovieModel]>
     func getComingSoonList() -> Observable<[MovieModel]>
     func getDetailMovie(id: Int) -> Observable<MovieModel>
-//    func getComingSoonDetail(id: Int) -> Observable<MovieModel>
     func getFavoriteMovie() -> Observable<[MovieModel]>
-    func searchPopularMovie(query: String) -> Observable<[MovieModel]>
-    func searchFavoriteMovie(query: String) -> Observable<[MovieModel]>
+    func updateFavoriteStatusFromDetail(id: Int) -> Observable<MovieModel>
     
 }
 
@@ -37,14 +35,9 @@ class MovieRepository: NSObject {
 }
 
 extension MovieRepository: MovieRepositoryProtocol {
-    func searchPopularMovie(query: String) -> Observable<[MovieModel]> {
-        return self.local.searchPopularMovie(query: query)
-            .map{MovieMapper.mapListPopularMovieEntityToDomain(input: $0)}
-    }
-    
-    func searchFavoriteMovie(query: String) -> Observable<[MovieModel]> {
-        return self.local.searchFavoriteMovie(query: query)
-            .map{MovieMapper.mapListPopularMovieEntityToDomain(input: $0)}
+    func updateFavoriteStatusFromDetail(id: Int) -> Observable<MovieModel> {
+        return self.local.updateFavoriteStatusFromDetail(id: id)
+            .map{ MovieMapper.mapDetailEntityToDomain(input: $0)}
     }
     
     func getBannerList() -> Observable<[MovieModel]> {
@@ -104,10 +97,6 @@ extension MovieRepository: MovieRepositoryProtocol {
                         .map{MovieMapper.mapDetailEntityToDomain(input: $0)}
             })
     }
-    
-//    func getComingSoonDetail(id: Int) -> Observable<MovieModel> {
-//        <#code#>
-//    }
     
     func getFavoriteMovie() -> Observable<[MovieModel]> {
         return self.local.getFavoriteMovie()

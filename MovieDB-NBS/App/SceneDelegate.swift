@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         homeNavigationController = UINavigationController.init(rootViewController: HomeViewController(viewModel: HomeViewModel(homeUseCase: Injection.init().provideHome())))
-        popularNavigationController = UINavigationController.init(rootViewController: PopularViewController())
-        favoriteNavigationController = UINavigationController.init(rootViewController: FavoriteViewController())
+        popularNavigationController = UINavigationController.init(rootViewController: PopularViewController(viewModel: PopularViewModel(useCase: Injection.init().providePopular())))
+        favoriteNavigationController = UINavigationController.init(rootViewController: FavoriteViewController(viewModel: FavoriteViewModel(useCase: Injection.init().provideFavorite())))
         tabBarController.viewControllers = [homeNavigationController, popularNavigationController, favoriteNavigationController]
         let homeItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 0)
         let popularItem = UITabBarItem(title: nil, image: UIImage(systemName: "rosette"), tag: 1)

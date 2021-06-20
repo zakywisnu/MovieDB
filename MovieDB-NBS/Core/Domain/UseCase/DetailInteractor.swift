@@ -10,6 +10,7 @@ import RxSwift
 
 protocol DetailUseCase{
     func getDetailMovie(id: Int) -> Observable<MovieModel>
+    func updateFavoriteStatus(id: Int) -> Observable<MovieModel>
 }
 
 class DetailInteractor: DetailUseCase {
@@ -22,5 +23,8 @@ class DetailInteractor: DetailUseCase {
     
     func getDetailMovie(id: Int) -> Observable<MovieModel> {
         return repository.getDetailMovie(id: id)
+    }
+    func updateFavoriteStatus(id: Int) -> Observable<MovieModel> {
+        return repository.updateFavoriteStatusFromDetail(id: id)
     }
 }

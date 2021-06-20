@@ -10,7 +10,6 @@ import RxSwift
 
 protocol PopularUseCase{
     func getPopularList() -> Observable<[MovieModel]>
-    func searchPopular(query: String) -> Observable<[MovieModel]>
 }
 
 class PopularInteractor: PopularUseCase{
@@ -24,10 +23,6 @@ class PopularInteractor: PopularUseCase{
     
     func getPopularList() -> Observable<[MovieModel]> {
         return repository.getPopularMovieList()
-    }
-    
-    func searchPopular(query: String) -> Observable<[MovieModel]> {
-        return repository.searchPopularMovie(query: query)
     }
     
 }

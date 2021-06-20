@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class DetailViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
@@ -16,24 +17,41 @@ class DetailViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    @Published var movie: MovieModel = MovieModel(id: 0, title: "", overview: "", posterPath: "", backdropPath: "", voteAverage: 0, releaseDate: "", runtime: 0, genre: [], favorite: false)
-    @Published var errorMessages: String = ""
-    @Published var isLoading: Bool = false
-    @Published var isError: Bool = false
+
+    var movie = BehaviorRelay<MovieModel>(value: MovieModel(id: 0, title: "", overview: "", posterPath: "", backdropPath: "", voteAverage: 0, releaseDate: "", runtime: 0, genre: [], favorite: false))
+    var isLoading = BehaviorRelay<Bool>(value: false)
+    var errorMessages = BehaviorRelay<String?>(value: nil)
+    var isError = BehaviorRelay<Bool>(value: false)
     
     func getDetailMovie(id: Int){
-        isLoading = true
+        isLoading.accept(true)
         useCase.getDetailMovie(id: id)
             .observe(on: MainScheduler.instance)
             .subscribe{ result in
-                self.movie = result
+                self.movie.accept(result)
             } onError: { error in
-                self.isError = true
-                self.isLoading = false
-                self.errorMessages = error.localizedDescription
+                self.errorMessages.accept(error.localizedDescription)
+                self.isError.accept(true)
+                self.isLoading.accept(false)
             } onCompleted: {
-                self.isError = false
-                self.isLoading = false
+                self.isError.accept(false)
+                self.isLoading.accept(false)
+            }.disposed(by: disposeBag)
+    }
+    
+    func updateFavoriteStatus(id: Int){
+        isLoading.accept(true)
+        useCase.updateFavoriteStatus(id: id)
+            .observe(on: MainScheduler.instance)
+            .subscribe{ result in
+                self.movie.accept(result)
+            } onError: { error in
+                self.errorMessages.accept(error.localizedDescription)
+                self.isError.accept(true)
+                self.isLoading.accept(false)
+            } onCompleted: {
+                self.isError.accept(false)
+                self.isLoading.accept(false)
             }.disposed(by: disposeBag)
     }
 }

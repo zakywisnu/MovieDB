@@ -45,7 +45,6 @@ extension RemoteDataSource: RemoteDataSourceProtocol{
     func getComingSoonMovies() -> Observable<[MovieResponse]> {
         return Observable<[MovieResponse]>.create{ observer in
             if let url = URL(string: Endpoints.Gets.popular.url + "&year=2022"){
-                print("url", url)
                 AF.request(url)
                     .validate()
                     .responseDecodable(of: MovieListResponse.self){ response in
