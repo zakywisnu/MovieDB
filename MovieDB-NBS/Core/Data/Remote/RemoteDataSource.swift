@@ -12,7 +12,6 @@ import RxSwift
 protocol RemoteDataSourceProtocol: AnyObject {
     func getPopularMovies() -> Observable<[MovieResponse]>
     func getComingSoonMovies() -> Observable<[MovieResponse]>
-//    func getDetailComingSoonMovie(id: Int) -> Observable<DetailMovieResponse>
     func getDetailMovie(id: Int) -> Observable<DetailMovieResponse>
 }
 
@@ -60,16 +59,6 @@ extension RemoteDataSource: RemoteDataSourceProtocol{
             return Disposables.create()
         }
     }
-    
-//    func getDetailComingSoonMovie(id: Int) -> Observable<DetailMovieResponse> {
-//        return Observable<DetailMovieResponse>.create{ observer in
-//            if let url = URL(string: Endpoints.Gets.detailMovie(id: id).url){
-//                AF.request(url)
-//                    .
-//            }
-//            return Disposables.create()
-//        }
-//    }
     
     func getDetailMovie(id: Int) -> Observable<DetailMovieResponse> {
         return Observable<DetailMovieResponse>.create{ observer in
