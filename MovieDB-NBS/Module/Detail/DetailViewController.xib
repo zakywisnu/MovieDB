@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,6 +17,7 @@
                 <outlet property="movieImage" destination="Dln-lQ-VhO" id="PGu-k2-535"/>
                 <outlet property="movieRuntime" destination="KaE-bs-Yek" id="jki-ba-MEe"/>
                 <outlet property="movieTitle" destination="3wR-OG-HNP" id="gkk-fM-jhl"/>
+                <outlet property="scrollView" destination="3hx-uN-Z8L" id="mPc-Lw-47L"/>
                 <outlet property="trailerButton" destination="BCx-bP-eyn" id="eLv-iJ-iax"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -108,22 +108,20 @@
                         <constraint firstAttribute="bottom" secondItem="Jal-cP-aTv" secondAttribute="bottom" id="Ox9-L5-uwD"/>
                         <constraint firstItem="fMX-Vy-Dfz" firstAttribute="top" secondItem="KaE-bs-Yek" secondAttribute="bottom" constant="14" id="PpG-1p-B01"/>
                         <constraint firstItem="Jal-cP-aTv" firstAttribute="top" secondItem="uXn-1u-WtR" secondAttribute="bottom" constant="112" id="WPV-LD-ZBv"/>
-                        <constraint firstItem="Jal-cP-aTv" firstAttribute="leading" secondItem="oxN-va-ckq" secondAttribute="leading" id="Yu5-Ay-Css"/>
+                        <constraint firstItem="Jal-cP-aTv" firstAttribute="leading" secondItem="3hx-uN-Z8L" secondAttribute="leading" id="Yu5-Ay-Css"/>
                         <constraint firstItem="3wR-OG-HNP" firstAttribute="leading" secondItem="3hx-uN-Z8L" secondAttribute="leading" constant="20" id="Zp0-tf-KMb"/>
                         <constraint firstAttribute="trailing" secondItem="uXn-1u-WtR" secondAttribute="trailing" constant="20" id="cy5-1P-Ohg"/>
                         <constraint firstItem="uXn-1u-WtR" firstAttribute="top" secondItem="Dln-lQ-VhO" secondAttribute="bottom" constant="16" id="kHD-iK-G3e"/>
-                        <constraint firstItem="oxN-va-ckq" firstAttribute="trailing" secondItem="Jal-cP-aTv" secondAttribute="trailing" id="kgh-ZO-waq"/>
+                        <constraint firstAttribute="trailing" secondItem="Jal-cP-aTv" secondAttribute="trailing" id="kgh-ZO-waq"/>
                         <constraint firstItem="bQX-Rx-6ZQ" firstAttribute="bottom" secondItem="Dln-lQ-VhO" secondAttribute="bottom" constant="-30" id="leJ-eV-GoF"/>
                         <constraint firstAttribute="trailing" secondItem="3wR-OG-HNP" secondAttribute="trailing" constant="20" id="myQ-fe-yNa"/>
                         <constraint firstItem="KaE-bs-Yek" firstAttribute="leading" secondItem="3hx-uN-Z8L" secondAttribute="leading" constant="20" id="pZi-9s-jWX"/>
                         <constraint firstItem="BCx-bP-eyn" firstAttribute="leading" secondItem="Dln-lQ-VhO" secondAttribute="leading" constant="20" id="ql9-0U-ALu"/>
                         <constraint firstItem="Dln-lQ-VhO" firstAttribute="top" secondItem="3hx-uN-Z8L" secondAttribute="top" id="rCv-EQ-OdL"/>
                     </constraints>
-                    <viewLayoutGuide key="contentLayoutGuide" id="7It-DF-dhY"/>
-                    <viewLayoutGuide key="frameLayoutGuide" id="oxN-va-ckq"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zj1-7F-lJi">
-                    <rect key="frame" x="20" y="72" width="48" height="32.5"/>
+                    <rect key="frame" x="20" y="48" width="48" height="32.5"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain">
                         <imageReference key="image" image="arrow.left" catalog="system"/>
@@ -134,14 +132,13 @@
                     </connections>
                 </button>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.1450980392" green="0.1529411765" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="3hx-uN-Z8L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3QK-Sb-UO9"/>
                 <constraint firstAttribute="trailing" secondItem="3hx-uN-Z8L" secondAttribute="trailing" id="S1O-bm-Z67"/>
                 <constraint firstItem="3hx-uN-Z8L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Yrq-8U-ccZ"/>
-                <constraint firstItem="Zj1-7F-lJi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="28" id="f1H-h8-YbO"/>
-                <constraint firstItem="Zj1-7F-lJi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hNY-fJ-V2P"/>
+                <constraint firstItem="Zj1-7F-lJi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="48" id="f1H-h8-YbO"/>
+                <constraint firstItem="Zj1-7F-lJi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="hNY-fJ-V2P"/>
                 <constraint firstAttribute="bottom" secondItem="3hx-uN-Z8L" secondAttribute="bottom" id="qqj-FE-MOx"/>
             </constraints>
             <point key="canvasLocation" x="139" y="72"/>

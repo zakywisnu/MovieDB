@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var movieTitle: UILabel!
@@ -114,6 +115,7 @@ class DetailViewController: UIViewController {
             favoriteButton.setTitleColor(UIColor.white, for: .normal)
             favoriteButton.tintColor = UIColor.white
         }
+        scrollView.bounces = false
         backButton.setTitle("", for: .normal)
     }
     

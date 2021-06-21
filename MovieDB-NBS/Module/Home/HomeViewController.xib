@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +14,7 @@
                 <outlet property="comingSoonCollectionView" destination="iyT-WH-gD9" id="rPJ-so-q5q"/>
                 <outlet property="notificationButton" destination="Zxr-10-DSM" id="Bhk-rR-ZEo"/>
                 <outlet property="popularCollectionView" destination="gI1-4Z-j4u" id="XAz-by-YDd"/>
-                <outlet property="scrollView" destination="joY-08-WXr" id="30E-f2-QIT"/>
+                <outlet property="scrollView" destination="joY-08-WXr" id="ECi-z2-WPq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -122,33 +121,33 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                     </subviews>
-                    <viewLayoutGuide key="safeArea" id="xzg-8m-ogg"/>
                     <color key="backgroundColor" red="0.1450980392" green="0.1529411765" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Rg9-eP-LNS" firstAttribute="top" secondItem="joY-08-WXr" secondAttribute="top" constant="20" id="10c-um-JWo"/>
-                        <constraint firstItem="iyT-WH-gD9" firstAttribute="leading" secondItem="xzg-8m-ogg" secondAttribute="leading" constant="20" id="2T8-dF-MJ7"/>
+                        <constraint firstItem="iyT-WH-gD9" firstAttribute="leading" secondItem="joY-08-WXr" secondAttribute="leading" constant="20" id="2T8-dF-MJ7"/>
                         <constraint firstItem="Rg9-eP-LNS" firstAttribute="leading" secondItem="joY-08-WXr" secondAttribute="leading" constant="23" id="4GS-po-97b"/>
                         <constraint firstItem="Zxr-10-DSM" firstAttribute="top" secondItem="joY-08-WXr" secondAttribute="top" constant="20" id="4qF-Pg-ynx"/>
-                        <constraint firstItem="iV4-aZ-1Ny" firstAttribute="leading" secondItem="xzg-8m-ogg" secondAttribute="leading" id="6m8-fs-7Pm"/>
+                        <constraint firstItem="iV4-aZ-1Ny" firstAttribute="leading" secondItem="joY-08-WXr" secondAttribute="leading" id="6m8-fs-7Pm"/>
                         <constraint firstItem="G5G-yz-P72" firstAttribute="top" secondItem="gI1-4Z-j4u" secondAttribute="bottom" constant="32" id="8Gu-LZ-H2J"/>
                         <constraint firstItem="iV4-aZ-1Ny" firstAttribute="top" secondItem="Rg9-eP-LNS" secondAttribute="bottom" constant="29" id="MpA-Wl-fso"/>
                         <constraint firstItem="gI1-4Z-j4u" firstAttribute="top" secondItem="cx4-A3-olC" secondAttribute="bottom" constant="16" id="NhB-V2-ChK"/>
+                        <constraint firstItem="iV4-aZ-1Ny" firstAttribute="centerX" secondItem="joY-08-WXr" secondAttribute="centerX" id="PJh-Ms-1TV"/>
                         <constraint firstAttribute="bottom" secondItem="Zxr-10-DSM" secondAttribute="bottom" constant="815" id="TPd-6G-pV3"/>
-                        <constraint firstItem="xzg-8m-ogg" firstAttribute="trailing" secondItem="iyT-WH-gD9" secondAttribute="trailing" id="Y5v-uR-4rZ"/>
-                        <constraint firstItem="xzg-8m-ogg" firstAttribute="trailing" secondItem="iV4-aZ-1Ny" secondAttribute="trailing" id="ZmP-q6-44d"/>
-                        <constraint firstItem="cx4-A3-olC" firstAttribute="leading" secondItem="xzg-8m-ogg" secondAttribute="leading" constant="20" id="aOk-hE-h9A"/>
-                        <constraint firstItem="gI1-4Z-j4u" firstAttribute="leading" secondItem="xzg-8m-ogg" secondAttribute="leading" constant="19" id="bbb-xW-Ynk"/>
-                        <constraint firstItem="G5G-yz-P72" firstAttribute="leading" secondItem="xzg-8m-ogg" secondAttribute="leading" constant="20" id="cmz-7G-irK"/>
-                        <constraint firstItem="xzg-8m-ogg" firstAttribute="trailing" secondItem="gI1-4Z-j4u" secondAttribute="trailing" id="iBj-vM-JEw"/>
+                        <constraint firstAttribute="trailing" secondItem="iyT-WH-gD9" secondAttribute="trailing" id="Y5v-uR-4rZ"/>
+                        <constraint firstAttribute="trailing" secondItem="iV4-aZ-1Ny" secondAttribute="trailing" id="ZmP-q6-44d"/>
+                        <constraint firstItem="cx4-A3-olC" firstAttribute="leading" secondItem="joY-08-WXr" secondAttribute="leading" constant="20" id="aOk-hE-h9A"/>
+                        <constraint firstItem="gI1-4Z-j4u" firstAttribute="leading" secondItem="joY-08-WXr" secondAttribute="leading" constant="19" id="bbb-xW-Ynk"/>
+                        <constraint firstItem="G5G-yz-P72" firstAttribute="leading" secondItem="joY-08-WXr" secondAttribute="leading" constant="20" id="cmz-7G-irK"/>
+                        <constraint firstAttribute="trailing" secondItem="gI1-4Z-j4u" secondAttribute="trailing" id="iBj-vM-JEw"/>
                         <constraint firstAttribute="trailing" secondItem="Zxr-10-DSM" secondAttribute="trailing" constant="39" id="oEU-vx-0Dq"/>
-                        <constraint firstItem="xzg-8m-ogg" firstAttribute="trailing" secondItem="Zxr-10-DSM" secondAttribute="trailing" constant="39" id="wxm-Mc-8Pv"/>
+                        <constraint firstAttribute="trailing" secondItem="Zxr-10-DSM" secondAttribute="trailing" constant="39" id="wxm-Mc-8Pv"/>
                         <constraint firstItem="iyT-WH-gD9" firstAttribute="top" secondItem="G5G-yz-P72" secondAttribute="bottom" constant="16" id="xJH-rc-enK"/>
                         <constraint firstItem="cx4-A3-olC" firstAttribute="top" secondItem="iV4-aZ-1Ny" secondAttribute="bottom" constant="30" id="yiU-PD-YV7"/>
                     </constraints>
                 </scrollView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.14509803921568626" green="0.15294117647058825" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <point key="canvasLocation" x="137.68115942028987" y="150.66964285714286"/>
         </view>
     </objects>

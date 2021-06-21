@@ -32,23 +32,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         self.navigationController?.isNavigationBarHidden = true
-        let bannerNib = UINib(nibName: "BannerCollectionViewCell", bundle: nil)
-        bannerCollectionView.register(bannerNib, forCellWithReuseIdentifier: "bannerCardIdentifier")
-        bannerCollectionView.dataSource = self
-        bannerCollectionView.delegate = self
-        let comingSoonNib = UINib(nibName: "ComingSoonCollectionViewCell", bundle: nil)
-        comingSoonCollectionView.register(comingSoonNib, forCellWithReuseIdentifier: "comingSoonCardIdentifier")
-        comingSoonCollectionView.dataSource = self
-        comingSoonCollectionView.delegate = self
-        let popularNib = UINib(nibName: "PopularCollectionViewCell", bundle: nil)
-        popularCollectionView.register(popularNib, forCellWithReuseIdentifier: "popularCardIdentifier")
-        popularCollectionView.delegate = self
-        popularCollectionView.dataSource = self
         fetchData()
         setupView()
-        print("Realm",Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     func fetchData(){
@@ -61,6 +47,22 @@ class HomeViewController: UIViewController {
     }
     
     func setupView(){
+        let bannerNib = UINib(nibName: "BannerCollectionViewCell", bundle: nil)
+        bannerCollectionView.register(bannerNib, forCellWithReuseIdentifier: "bannerCardIdentifier")
+        bannerCollectionView.dataSource = self
+        bannerCollectionView.delegate = self
+        let comingSoonNib = UINib(nibName: "ComingSoonCollectionViewCell", bundle: nil)
+        comingSoonCollectionView.register(comingSoonNib, forCellWithReuseIdentifier: "comingSoonCardIdentifier")
+        comingSoonCollectionView.dataSource = self
+        comingSoonCollectionView.delegate = self
+        let popularNib = UINib(nibName: "PopularCollectionViewCell", bundle: nil)
+        popularCollectionView.register(popularNib, forCellWithReuseIdentifier: "popularCardIdentifier")
+        popularCollectionView.delegate = self
+        popularCollectionView.dataSource = self
+        
+        scrollView.bounces = false
+        scrollView.backgroundColor = UIColor(red: 32/255.0, green: 33/255.0, blue: 35/255.0, alpha: 1.0)
+        
         self.notificationButton.setTitle("", for: .normal)
         self.notificationButton.setImage(UIImage(systemName: "bell"), for: .normal)
         scrollView.contentInsetAdjustmentBehavior = .always

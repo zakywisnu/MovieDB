@@ -33,6 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         favoriteNavigationController.tabBarItem = favoriteItem
         UITabBar.appearance().tintColor = UIColor(red: 255/255.0, green: 209/255.0, blue: 48/255.0, alpha: 1.0)
         UITabBar.appearance().unselectedItemTintColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        UITabBar.appearance().barStyle = UIBarStyle.black
         UITabBar.appearance().backgroundColor = UIColor(red: 32/255.0, green: 33/255.0, blue: 35/255.0, alpha: 1.0)
         
         window?.windowScene = windowScene
