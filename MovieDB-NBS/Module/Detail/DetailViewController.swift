@@ -74,7 +74,7 @@ class DetailViewController: UIViewController {
         if viewModel.movie.value.favorite == true {
             favoriteButton.setTitle("Remove Favorite", for: .normal)
             favoriteButton.setImage(UIImage(systemName: "minus"), for: .normal)
-            favoriteButton.backgroundColor = UIColor(red: 255/255.0, green: 209/255.0, blue: 48/255.0, alpha: 1.0)
+//            favoriteButton.backgroundColor = UIColor(red: 255/255.0, green: 209/255.0, blue: 48/255.0, alpha: 1.0)
             favoriteButton.layer.borderWidth = 0
             favoriteButton.setTitleColor(UIColor.white, for: .normal)
             
@@ -101,7 +101,7 @@ class DetailViewController: UIViewController {
         if viewModel.movie.value.favorite == true {
             favoriteButton.setTitle("Remove Favorite", for: .normal)
             favoriteButton.setImage(UIImage(systemName: "minus"), for: .normal)
-            favoriteButton.backgroundColor = UIColor(red: 255/255.0, green: 209/255.0, blue: 48/255.0, alpha: 1.0)
+//            favoriteButton.backgroundColor = UIColor(red: 255/255.0, green: 209/255.0, blue: 48/255.0, alpha: 1.0)
             favoriteButton.layer.borderWidth = 0
             favoriteButton.setTitleColor(UIColor.white, for: .normal)
             
@@ -111,11 +111,11 @@ class DetailViewController: UIViewController {
             favoriteButton.setImage(UIImage(systemName: "plus"), for: .normal)
             favoriteButton.backgroundColor = UIColor.clear
             favoriteButton.layer.borderColor = CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.12)
+            favoriteButton.setTitleColor(UIColor.white, for: .normal)
             favoriteButton.layer.borderWidth = 4
             favoriteButton.setTitleColor(UIColor.white, for: .normal)
             favoriteButton.tintColor = UIColor.white
         }
-        scrollView.bounces = false
         backButton.setTitle("", for: .normal)
     }
     
@@ -127,7 +127,7 @@ class DetailViewController: UIViewController {
         if viewModel.movie.value.favorite == true {
             favoriteButton.setTitle("Remove Favorite", for: .normal)
             favoriteButton.setImage(UIImage(systemName: "minus"), for: .normal)
-            favoriteButton.backgroundColor = UIColor(red: 255/255.0, green: 209/255.0, blue: 48/255.0, alpha: 1.0)
+//            favoriteButton.backgroundColor = UIColor(red: 255/255.0, green: 209/255.0, blue: 48/255.0, alpha: 1.0)
             favoriteButton.layer.borderWidth = 0
             favoriteButton.setTitleColor(UIColor.white, for: .normal)
             

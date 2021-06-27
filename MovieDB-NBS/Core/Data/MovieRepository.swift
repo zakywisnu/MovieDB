@@ -16,7 +16,6 @@ protocol MovieRepositoryProtocol: AnyObject {
     func getDetailMovie(id: Int) -> Observable<MovieModel>
     func getFavoriteMovie() -> Observable<[MovieModel]>
     func updateFavoriteStatusFromDetail(id: Int) -> Observable<MovieModel>
-    
 }
 
 class MovieRepository: NSObject {
@@ -42,7 +41,6 @@ extension MovieRepository: MovieRepositoryProtocol {
     
     func getBannerList() -> Observable<[MovieModel]> {
         return self.local.getListPopularMovies()
-            .take(3)
             .map{ MovieMapper.mapListPopularMovieEntityToDomain(input: $0)}
             .filter{ !$0.isEmpty}
             .ifEmpty(switchTo: self.remote.getPopularMovies()
@@ -50,7 +48,6 @@ extension MovieRepository: MovieRepositoryProtocol {
                         .flatMap{ self.local.addPopularMovies(from: $0)}
                         .filter{$0}
                         .flatMap{ _ in self.local.getListPopularMovies()
-                        .take(3)
                         .map{ MovieMapper.mapListPopularMovieEntityToDomain(input: $0)}
             })
     }
@@ -71,7 +68,6 @@ extension MovieRepository: MovieRepositoryProtocol {
     
     func getComingSoonList() -> Observable<[MovieModel]> {
         return self.local.getListComingSoonMovies()
-            .take(10)
             .map{ MovieMapper.mapListPopularMovieEntityToDomain(input: $0)}
             .filter{ !$0.isEmpty}
             .ifEmpty(switchTo:
@@ -80,7 +76,6 @@ extension MovieRepository: MovieRepositoryProtocol {
                         .flatMap{self.local.addPopularMovies(from: $0)}
                         .filter{$0}
                         .flatMap{ _ in self.local.getListComingSoonMovies()
-                        .take(10)
                         .map{MovieMapper.mapListPopularMovieEntityToDomain(input: $0)}
             })
     }

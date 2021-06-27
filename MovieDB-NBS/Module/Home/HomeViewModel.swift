@@ -28,7 +28,6 @@ class HomeViewModel: ObservableObject {
         isLoading.accept(true)
         homeUseCase.getBannerList()
             .observe(on: MainScheduler.instance)
-            .take(3)
             .subscribe{ result in
                 self.bannerMovies.accept(result)
             } onError: { error in
@@ -45,7 +44,6 @@ class HomeViewModel: ObservableObject {
         isLoading.accept(true)
         homeUseCase.getPopularList()
             .observe(on: MainScheduler.instance)
-            .take(10)
             .subscribe{ result in
                 self.popularMovies.accept(result)
             } onError: { error in
@@ -62,7 +60,6 @@ class HomeViewModel: ObservableObject {
         isLoading.accept(true)
         homeUseCase.getComingSoon()
             .observe(on: MainScheduler.instance)
-            .take(10)
             .subscribe{ result in
                 self.comingSoonMovies.accept(result)
             } onError: { error in

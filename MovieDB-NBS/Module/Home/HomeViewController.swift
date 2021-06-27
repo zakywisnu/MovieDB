@@ -60,7 +60,6 @@ class HomeViewController: UIViewController {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
         
-        scrollView.bounces = false
         scrollView.backgroundColor = UIColor(red: 32/255.0, green: 33/255.0, blue: 35/255.0, alpha: 1.0)
         
         self.notificationButton.setTitle("", for: .normal)

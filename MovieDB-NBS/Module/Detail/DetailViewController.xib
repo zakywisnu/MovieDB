@@ -31,19 +31,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dln-lQ-VhO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="563"/>
+                            <rect key="frame" x="0.0" y="-50" width="414" height="563"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="563" id="Prj-sJ-niZ"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="8" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXn-1u-WtR">
-                            <rect key="frame" x="20" y="579" width="374" height="17"/>
+                            <rect key="frame" x="20" y="529" width="374" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCx-bP-eyn">
-                            <rect key="frame" x="20" y="497" width="160" height="36"/>
+                            <rect key="frame" x="20" y="447" width="160" height="36"/>
                             <color key="backgroundColor" red="1" green="0.81960784310000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="160" id="AQ7-Zn-yw6"/>
@@ -56,37 +56,37 @@
                             </buttonConfiguration>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQX-Rx-6ZQ">
-                            <rect key="frame" x="194" y="498" width="200" height="35"/>
+                            <rect key="frame" x="194" y="448" width="200" height="35"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Add to Favorite">
                                 <imageReference key="image" image="plus" catalog="system"/>
-                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="baseForegroundColor" systemColor="systemYellowColor"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="favoriteButtonTappedWithSender:" destination="-1" eventType="touchUpInside" id="jOe-JH-rWm"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMX-Vy-Dfz">
-                            <rect key="frame" x="20" y="458.5" width="374" height="14.5"/>
+                            <rect key="frame" x="20" y="408.5" width="374" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h 29m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaE-bs-Yek">
-                            <rect key="frame" x="20" y="430" width="41.5" height="14.5"/>
+                            <rect key="frame" x="20" y="380" width="41.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wR-OG-HNP">
-                            <rect key="frame" x="20" y="421" width="374" height="0.0"/>
+                            <rect key="frame" x="20" y="371" width="374" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jal-cP-aTv">
-                            <rect key="frame" x="0.0" y="708" width="414" height="150"/>
+                            <rect key="frame" x="0.0" y="658" width="414" height="150"/>
                             <color key="backgroundColor" red="0.14509803921568626" green="0.15294117647058825" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="150" id="JfG-4k-lVF"/>
@@ -117,7 +117,7 @@
                         <constraint firstAttribute="trailing" secondItem="3wR-OG-HNP" secondAttribute="trailing" constant="20" id="myQ-fe-yNa"/>
                         <constraint firstItem="KaE-bs-Yek" firstAttribute="leading" secondItem="3hx-uN-Z8L" secondAttribute="leading" constant="20" id="pZi-9s-jWX"/>
                         <constraint firstItem="BCx-bP-eyn" firstAttribute="leading" secondItem="Dln-lQ-VhO" secondAttribute="leading" constant="20" id="ql9-0U-ALu"/>
-                        <constraint firstItem="Dln-lQ-VhO" firstAttribute="top" secondItem="3hx-uN-Z8L" secondAttribute="top" id="rCv-EQ-OdL"/>
+                        <constraint firstItem="Dln-lQ-VhO" firstAttribute="top" secondItem="3hx-uN-Z8L" secondAttribute="top" constant="-50" id="rCv-EQ-OdL"/>
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zj1-7F-lJi">
@@ -148,5 +148,8 @@
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="arrowtriangle.forward" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
